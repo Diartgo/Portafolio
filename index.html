@@ -217,7 +217,7 @@
 </section>
 
 <!-- Frontend Projects Section -->
-<section id="frontend" class="container d-none">
+<section id="frontend" class="portfolio-section container d-none">
     <h2 style="font-size: 32px; font-weight: bold; text-align: center; margin-bottom: 40px; margin-top: 20px;"> 🖥️Proyectos Frontend</h2>
     <div class="row">
         <!-- Project Card 1 -->
@@ -296,14 +296,14 @@
 </section>
 
 <!-- Área Creativa con menú interactivo -->
-<section id="area-creativa" class="creative-area d-none mx-auto text-align-center" style="padding: 40px; background-color: #051824; color: #f8f9fa; max-width: 1200px;">
+<section id="area-creativa" class="portfolio-section creative-area d-none mx-auto text-align-center" style="padding: 40px; background-color: #051824; color: #f8f9fa; max-width: 1200px;">
     <h2 style="font-size: 32px; font-weight: bold; text-align: center; margin-bottom: 40px;">🧠 Área Creativa</h2>
   
     <!-- Menú -->
     <div class="menu-buttons" style="text-align: center; margin-bottom: 30px;">
       <button onclick="showCreativeSection('branding')" class="menu-btn active"> Branding</button>
       <button onclick="showCreativeSection('redes')" class="menu-btn"> Contenido Visual</button>
-      <button onclick="showCreativeSection('uiux')" class="menu-btn"> Diseño UI/UX</button>
+      <button onclick="showCreativeSection('uiux')" class="menu-btn"> Diseños Figma</button>
     </div>
   
     <!-- Branding -->
@@ -445,7 +445,7 @@
   
 <!-- UI/UX -->
 <div id="uiux" class="creative-section" style="display: none;">
-    <h3 style="font-size: 24px; font-weight: bold;">🖥️ Diseño UI/UX</h3>
+    <h3 style="font-size: 24px; font-weight: bold;">🖥️ Diseño figma</h3>
     <p style="font-size: 16px;">
       Diseño de interfaces centradas en el usuario. Prototipos interactivos en Figma para validar usabilidad y diseño visual.
     </p>
@@ -476,6 +476,7 @@
         </a>
       </div>
   </div>
+</section>
 
 <!-- Tecnologías que uso -->
 <section class="container text-center pt-5" >
@@ -526,31 +527,21 @@
     </div>
     <p style="color: #82659d;">© 2025 Diana Gómez. Todos los derechos reservados.</p>
 </footer>
-
-
 <script>
-    function showSection(sectionId) {
-        document.getElementById("frontend").classList.add("d-none");
-        document.getElementById("area-creativa").classList.add("d-none");
+  function showSection(sectionId) {
+    // Ocultar ambas secciones
+    document.getElementById("frontend").classList.add("d-none");
+    document.getElementById("area-creativa").classList.add("d-none");
 
-        if (sectionId === 'frontend') {
-            document.getElementById("frontend").classList.remove("d-none");
-        } else if (sectionId === 'designer') {
-            document.getElementById("area-creativa").classList.remove("d-none");
-        }
-    }
-</script>
-<script>
-    function showSection(section) {
-        document.getElementById("frontend").classList.add("d-none");
-        document.getElementById("area-creativa").classList.add("d-none");
+    // Mostrar la sección correspondiente
+    const sectionToShow = document.getElementById(sectionId === "frontend" ? "frontend" : "area-creativa");
+    sectionToShow.classList.remove("d-none");
 
-        if (section === "frontend") {
-            document.getElementById("frontend").classList.remove("d-none");
-        } else {
-            document.getElementById("area-creativa").classList.remove("d-none");
-        }
-    }
+    // Hacer scroll hacia esa sección
+    setTimeout(() => {
+      sectionToShow.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
 </script>
 <script>
     function showCreativeSection(sectionId) {
